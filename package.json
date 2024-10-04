@@ -2,11 +2,23 @@
   "name": "zero-tolerance",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "dev": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix",
+    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
+  },
   "dependencies": {
+    "@react-three/drei": "^9.114.0",
     "@react-three/fiber": "^8.17.9",
+    "@react-three/rapier": "^1.5.0",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "@tweenjs/tween.js": "^25.0.0",
     "@types/jest": "^27.5.2",
     "@types/node": "^16.18.112",
     "@types/react": "^18.3.11",
@@ -16,16 +28,8 @@
     "react-scripts": "^5.0.1",
     "three": "^0.169.0",
     "typescript": "^4.9.5",
-    "web-vitals": "^2.1.4"
-  },
-  "scripts": {
-    "dev": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "lint": "eslint .",
-    "lint:fix": "eslint --fix",
-    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
+    "web-vitals": "^2.1.4",
+    "zustand": "^5.0.0-rc.2"
   },
   "eslintConfig": {
     "extends": [
@@ -48,6 +52,8 @@
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@eslint/js": "^9.11.1",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "@typescript-eslint/parser": "^5.0.0",
     "eslint": "^8.57.1",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
@@ -60,8 +66,6 @@
     "stylelint": "^16.9.0",
     "stylelint-config-standard": "^36.0.1",
     "stylelint-config-standard-scss": "^13.1.0",
-    "typescript-eslint": "^8.8.0",
-    "@typescript-eslint/eslint-plugin": "^5.0.0",
-    "@typescript-eslint/parser": "^5.0.0"
+    "typescript-eslint": "^8.8.0"
   }
 }
