@@ -1,5 +1,5 @@
 import { PointerLockControls, Sky } from '@react-three/drei';
-import { Ground } from './Ground';
+import { Ground } from './components/Ground';
 
 export const App = () => {
   return (
