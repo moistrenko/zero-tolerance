@@ -23,19 +23,16 @@ export const usePersonControls = () => {
     jump: false
   });
 
-  const setMovementStatus = (code: any, status: any) => {
-    console.log(code);
-    console.log(status);
-
+  const setMovementStatus = (code: keyof IKeys, status: boolean) => {
     setMovement((m) => ({ ...m, [code]: status }));
   };
 
   useEffect(() => {
-    const handleKeyDown = (ev: any) => {
+    const handleKeyDown = (ev: KeyboardEvent) => {
       setMovementStatus(moveFieldByKey(ev.code), true);
     };
 
-    const handleKeyUp = (ev: any) => {
+    const handleKeyUp = (ev: KeyboardEvent) => {
       setMovementStatus(moveFieldByKey(ev.code), false);
     };
 
@@ -46,7 +43,7 @@ export const usePersonControls = () => {
       document.removeEventListener('keydown', handleKeyDown);
       document.removeEventListener('keyup', handleKeyUp);
     };
-  }, []);
+  });
 
   return movement;
 };
