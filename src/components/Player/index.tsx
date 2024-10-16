@@ -17,14 +17,18 @@ export const Player = () => {
 
   const rapier = useRapier();
 
-  useFrame(() => {
+  useFrame((state) => {
     if (!playerRef.current) return;
 
     const velocity = playerRef.current.linvel();
 
     frontVector.set(0, 0, Number(backward) - Number(forward));
     sideVector.set(Number(left) - Number(right), 0, 0);
-    direction.subVectors(frontVector, sideVector).normalize().multiplyScalar(MOVE_SPEED);
+    direction
+      .subVectors(frontVector, sideVector)
+      .normalize()
+      .multiplyScalar(MOVE_SPEED)
+      .applyEuler(state.camera.rotation);
 
     playerRef.current.wakeUp();
     playerRef.current.setLinvel({ x: direction.x, y: velocity.y, z: direction.z }, true);
@@ -32,13 +36,15 @@ export const Player = () => {
     const world = rapier.world;
     const ray = world.castRay(
       new RAPIER.Ray(playerRef.current.translation(), { x: 0, y: -1, z: 0 }),
-      0,
-      false
+      1,
+      true
     );
+    const { x, y, z } = playerRef.current.translation();
+    const grounded = ray && ray.collider && y <= 1.5;
 
-    // const grounded = ray && ray.collider && Math.abs(ray.toi) <= 1;
-    const grounded = ray && ray.collider;
     if (jump && grounded) doJump();
+
+    state.camera.position.set(x, y, z);
   });
 
   const doJump = () => {
@@ -50,7 +56,7 @@ export const Player = () => {
     <>
       <RigidBody colliders={false} mass={1} ref={playerRef} lockRotations>
         <mesh>
-          <CapsuleCollider args={[0.5, 0.5]} />
+          <CapsuleCollider args={[0.75, 0.5]} />
         </mesh>
       </RigidBody>
     </>
