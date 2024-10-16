@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import * as RAPIER from '@dimforge/rapier3d-compat';
-import { RapierRigidBody, useRapier, RigidBody } from '@react-three/rapier';
+import { RapierRigidBody, CapsuleCollider, useRapier, RigidBody } from '@react-three/rapier';
 import { MutableRefObject, RefObject, useRef } from 'react';
 import { usePersonControls } from 'hooks/hooks';
 import { useFrame } from '@react-three/fiber';
@@ -36,7 +36,7 @@ export const Player = () => {
       false
     );
 
-    // const grounded = ray && ray.collider && Math.abs(ray.toi) <= 0.75;
+    // const grounded = ray && ray.collider && Math.abs(ray.toi) <= 1;
     const grounded = ray && ray.collider;
     if (jump && grounded) doJump();
   });
@@ -48,9 +48,9 @@ export const Player = () => {
 
   return (
     <>
-      <RigidBody position={[0, 1, -2]} mass={1} ref={playerRef} lockRotations>
+      <RigidBody colliders={false} mass={1} ref={playerRef} lockRotations>
         <mesh>
-          <capsuleGeometry args={[0.5, 0.5]} />
+          <CapsuleCollider args={[0.5, 0.5]} />
         </mesh>
       </RigidBody>
     </>
