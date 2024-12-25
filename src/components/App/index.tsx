@@ -2,7 +2,6 @@ import { PointerLockControls, Sky, Stars } from '@react-three/drei';
 import { Ground } from 'components/Ground';
 import { Player } from 'components/Player';
 import { Cubes } from 'components/Cube';
-import { AKS74U } from 'components/Weapons/AKS-74U';
 import { Physics } from '@react-three/rapier';
 
 const shadowOffset = 50;
@@ -29,10 +28,6 @@ export const App = () => {
         <Player />
         <Cubes />
       </Physics>
-
-      <group position={[3, 1, -2]}>
-        <AKS74U />
-      </group>
     </>
   );
 };
