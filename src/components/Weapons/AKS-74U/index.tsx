@@ -1,8 +1,6 @@
-import React, { useRef } from 'react';
 import { useGLTF } from '@react-three/drei';
-import { BufferGeometry } from 'three';
 
-export function Model(props: any) {
+export function AKS74U(props: any) {
   const {
     nodes,
     materials

@@ -2,6 +2,7 @@ import { PointerLockControls, Sky, Stars } from '@react-three/drei';
 import { Ground } from 'components/Ground';
 import { Player } from 'components/Player';
 import { Cubes } from 'components/Cube';
+import { AKS74U } from 'components/Weapons/AKS-74U';
 import { Physics } from '@react-three/rapier';
 
 export const App = () => {
@@ -16,6 +17,10 @@ export const App = () => {
         <Player />
         <Cubes />
       </Physics>
+
+      <group position={[0, 3, 0]}>
+        <AKS74U />
+      </group>
     </>
   );
 };
