@@ -7,7 +7,7 @@ export function AKS74U(props: any) {
   }: {
     nodes: any;
     materials: any;
-  } = useGLTF('/weapon.glb');
+  } = useGLTF('./weapon.glb');
   return (
     <group {...props} dispose={null}>
       <mesh
